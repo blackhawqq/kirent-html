@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Profilim</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .profile-box {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    button {
+      background: #4f46e5;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="profile-box">
+  <h2>Hoş geldin, <span id="userDisplay"></span>!</h2>
+  <p>Bu senin profil sayfandır. Buradan bilgilerini görebilirsin.</p>
+  <button onclick="logout()">Çıkış Yap</button>
+</div>
+
+<script>
+  const user = localStorage.getItem("username");
+  if (!user) {
+    window.location.href = "giris.html";
+  } else {
+    document.getElementById("userDisplay").textContent = user;
+  }
+
+  function logout() {
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+    window.location.href = "giris.html";
+  }
+</script>
+
+</body>
+</html>
