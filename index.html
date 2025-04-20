@@ -116,7 +116,6 @@
     <a href="urunler.html">Ürünler</a>
     <a href="urun-ekle.html">Ürün Ekle</a>
     <a href="giriskayit-profil.html">Giriş / Kayıt</a>
-
   </nav>
 </header>
 
@@ -126,46 +125,57 @@
 </div>
 
 <div class="categories">
-  <button>Hepsi</button>
-  <button>Elektronik</button>
-  <button>Ulaşım</button>
-  <button>Ev Eşyası</button>
-  <button>Kamp</button>
-  <button>Moda</button>
-  <button>Diğer</button>
+  <button onclick="filtrele('Hepsi')">Hepsi</button>
+  <button onclick="filtrele('Elektronik')">Elektronik</button>
+  <button onclick="filtrele('Ulaşım')">Ulaşım</button>
+  <button onclick="filtrele('Ev Eşyası')">Ev Eşyası</button>
+  <button onclick="filtrele('Kamp')">Kamp</button>
+  <button onclick="filtrele('Moda')">Moda</button>
+  <button onclick="filtrele('Diğer')">Diğer</button>
 </div>
 
-<div class="product-list">
-  <div class="card">
+<div class="product-list" id="urunler">
+  <div class="card" data-kategori="Ulaşım">
     <img src="https://source.unsplash.com/featured/?bicycle" alt="Dağ Bisikleti">
     <div class="card-body">
       <h3>Dağ Bisikleti</h3>
       <p>Günlük 90 TL - Kadıköy, İstanbul</p>
     </div>
     <div class="card-footer">
-      <a href="urun-detay.html" class="btn">Kirala</a>
+      <a href="urun-detay.html?id=bisiklet" class="btn">Kirala</a>
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-kategori="Elektronik">
     <img src="https://source.unsplash.com/featured/?camera" alt="Canon Kamera">
     <div class="card-body">
       <h3>Canon Kamera</h3>
       <p>Günlük 120 TL - Beşiktaş, İstanbul</p>
     </div>
     <div class="card-footer">
-      <a href="urun-detay.html" class="btn">Kirala</a>
+      <a href="urun-detay.html?id=kamera" class="btn">Kirala</a>
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-kategori="Kamp">
     <img src="https://source.unsplash.com/featured/?tent" alt="Kamp Çadırı">
     <div class="card-body">
       <h3>Kamp Çadırı</h3>
       <p>Haftalık 250 TL - İzmir</p>
     </div>
     <div class="card-footer">
-      <a href="urun-detay.html" class="btn">Kirala</a>
+      <a href="urun-detay.html?id=kamp-cadiri" class="btn">Kirala</a>
+    </div>
+  </div>
+
+  <div class="card" data-kategori="Ev Eşyası">
+    <img src="https://source.unsplash.com/featured/?sofa" alt="Koltuk Takımı">
+    <div class="card-body">
+      <h3>Koltuk Takımı</h3>
+      <p>Aylık 750 TL - Ankara</p>
+    </div>
+    <div class="card-footer">
+      <a href="urun-detay.html?id=koltuk" class="btn">Kirala</a>
     </div>
   </div>
 </div>
@@ -174,6 +184,21 @@
   © 2025 KirentApp. Tüm hakları saklıdır.
 </footer>
 
+<script>
+  function filtrele(kategori) {
+    const kartlar = document.querySelectorAll(".card");
+    kartlar.forEach(kart => {
+      const kartKategori = kart.getAttribute("data-kategori");
+      if (kategori === "Hepsi" || kartKategori === kategori) {
+        kart.style.display = "block";
+      } else {
+        kart.style.display = "none";
+      }
+    });
+  }
+</script>
+
 </body>
 </html>
+
 
