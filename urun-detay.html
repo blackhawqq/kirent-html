@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kirent - Ürün Detayı</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+    }
+    header {
+      background: #4F46E5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .image-section img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .details-section {
+      flex: 1;
+    }
+    .details-section h2 {
+      margin-top: 0;
+    }
+    .details-section p {
+      line-height: 1.6;
+      color: #444;
+    }
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4F46E5;
+      margin-top: 20px;
+    }
+    .button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: #4F46E5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    .button:hover {
+      background: #3b38d0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Kirent</h1>
+  <nav>
+    <a href="index.html">Anasayfa</a>
+    <a href="urunler.html">Ürünler</a>
+    <a href="urun-ekle.html">Ürün Ekle</a>
+    <a href="giris.html">Giriş</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="image-section">
+    <img src="https://source.unsplash.com/featured/?camera" alt="Ürün görseli" />
+  </div>
+  <div class="details-section">
+    <h2>Canon EOS M50</h2>
+    <p>Kompakt ve güçlü aynasız kamera. Vloggerlar ve içerik üreticileri için ideal. Hafif tasarım, 4K video çekimi ve Wi-Fi bağlantısı.</p>
+    <p><strong>Konum:</strong> İstanbul, Kadıköy</p>
+    <p><strong>Kategori:</strong> Fotoğrafçılık</p>
+    <div class="price">Günlük: 120 TL</div>
+    <button class="button">Kirala</button>
+  </div>
+</div>
+
+</body>
+</html>
