@@ -34,10 +34,32 @@
     }
     .onayla { background: #22c55e; }
     .reddet { background: #ef4444; }
+
+    #login-box {
+      max-width: 400px;
+      margin: 100px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    input[type="password"], button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
 
+<div id="login-box">
+  <h2>Admin Girişi</h2>
+  <input type="password" id="sifre" placeholder="Şifre" />
+  <button onclick="dogrula()">Giriş Yap</button>
+</div>
+
+<div id="panel" style="display:none;">
   <h2>Kiralama Talepleri - Admin Panel</h2>
   <table id="talepTablosu">
     <thead>
@@ -53,47 +75,68 @@
     </thead>
     <tbody></tbody>
   </table>
+</div>
 
-  <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwHO7lcnFnjArlpAimFW0j7kOcwqhHev6ZKUYQjPQPeiaOT4yxZN0kg5nnQ_OVhZKF4/exec";
+<script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwHO7lcnFnjArlpAimFW0j7kOcwqhHev6ZKUYQjPQPeiaOT4yxZN0kg5nnQ_OVhZKF4/exec";
+  const dogruSifre = "Kapadokya987";
 
-    async function listele() {
-      const response = await fetch(scriptURL);
-      const talepler = await response.json();
-      const tbody = document.querySelector("tbody");
-      tbody.innerHTML = "";
-
-      talepler.forEach(talep => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${talep.ad}</td>
-          <td>${talep.email}</td>
-          <td>${talep.urun}</td>
-          <td>${talep.baslangic}</td>
-          <td>${talep.bitis}</td>
-          <td>${talep.durum}</td>
-          <td>
-            <button class="btn onayla" onclick="guncelleDurum(${talep.id}, 'Onaylandı')">Onayla</button>
-            <button class="btn reddet" onclick="guncelleDurum(${talep.id}, 'Reddedildi')">Reddet</button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
+  function dogrula() {
+    const sifre = document.getElementById("sifre").value;
+    if (sifre === dogruSifre) {
+      localStorage.setItem("admin", "giris");
+      document.getElementById("login-box").style.display = "none";
+      document.getElementById("panel").style.display = "block";
+      listele();
+    } else {
+      alert("Hatalı şifre!");
     }
+  }
 
-    async function guncelleDurum(id, durum) {
-      const formData = new FormData();
-      formData.append("id", id);
-      formData.append("durum", durum);
-      await fetch(scriptURL, {
-        method: "POST",
-        body: formData
+  function listele() {
+    fetch(scriptURL)
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.querySelector("tbody");
+        tbody.innerHTML = "";
+        data.forEach(talep => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${talep.ad}</td>
+            <td>${talep.email}</td>
+            <td>${talep.urun}</td>
+            <td>${talep.baslangic}</td>
+            <td>${talep.bitis}</td>
+            <td>${talep.durum}</td>
+            <td>
+              <button class="btn onayla" onclick="guncelleDurum(${talep.id}, 'Onaylandı')">Onayla</button>
+              <button class="btn reddet" onclick="guncelleDurum(${talep.id}, 'Reddedildi')">Reddet</button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
       });
+  }
+
+  function guncelleDurum(id, durum) {
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("durum", durum);
+    fetch(scriptURL, {
+      method: "POST",
+      body: formData
+    }).then(() => listele());
+  }
+
+  // Oturum açık kalırsa tekrar giriş yapmadan göstersin
+  window.onload = () => {
+    if (localStorage.getItem("admin") === "giris") {
+      document.getElementById("login-box").style.display = "none";
+      document.getElementById("panel").style.display = "block";
       listele();
     }
-
-    window.onload = listele;
-  </script>
+  }
+</script>
 
 </body>
 </html>
