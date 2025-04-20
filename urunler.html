@@ -5,15 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kirent - Ürünler</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
-    header { background: #4F46E5; color: white; padding: 20px; text-align: center; }
-    h1 { margin: 0; font-size: 24px; }
-
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #4F46E5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
     nav a {
       margin: 0 10px;
       color: white;
       text-decoration: none;
       font-weight: bold;
+    }
+
+    .kategori-bar {
+      text-align: center;
+      margin: 20px;
+    }
+    .kategori-bar button {
+      margin: 5px;
+      padding: 10px 16px;
+      background: #4F46E5;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .kategori-bar button:hover {
+      background: #3333cc;
     }
 
     .product-grid {
@@ -84,40 +110,76 @@
   </nav>
 </header>
 
+<!-- Kategori Butonları -->
+<div class="kategori-bar">
+  <button onclick="filtrele('Hepsi')">Hepsi</button>
+  <button onclick="filtrele('Elektronik')">Elektronik</button>
+  <button onclick="filtrele('Ulaşım')">Ulaşım</button>
+  <button onclick="filtrele('Kamp')">Kamp</button>
+  <button onclick="filtrele('Fotoğrafçılık')">Fotoğrafçılık</button>
+</div>
+
+<!-- Ürün Kartları -->
 <div class="product-grid">
-  <div class="product-card">
-    <img src="https://source.unsplash.com/featured/?bicycle" alt="Dağ Bisikleti">
+  <div class="product-card" data-kategori="Elektronik">
+    <img src="https://source.unsplash.com/featured/?playstation" alt="Playstation 5">
+    <div class="content">
+      <h2>Playstation 5</h2>
+      <p>Yeni nesil oyun keyfi. Günlük 200 TL</p>
+    </div>
+    <div class="footer">
+      <a href="urun-detay.html" class="btn">İncele</a>
+    </div>
+  </div>
+
+  <div class="product-card" data-kategori="Ulaşım">
+    <img src="https://source.unsplash.com/featured/?bicycle" alt="Bisiklet">
     <div class="content">
       <h2>Dağ Bisikleti</h2>
-      <p>Şehir dışında sürüş keyfi. Günlük 80 TL</p>
+      <p>Şehir turu için ideal. Günlük 80 TL</p>
     </div>
     <div class="footer">
       <a href="urun-detay.html" class="btn">İncele</a>
     </div>
   </div>
 
-  <div class="product-card">
-    <img src="https://source.unsplash.com/featured/?camera" alt="DSLR Kamera">
-    <div class="content">
-      <h2>Canon Kamera</h2>
-      <p>Profesyonel çekimler için. Günlük 120 TL</p>
-    </div>
-    <div class="footer">
-      <a href="urun-detay.html" class="btn">İncele</a>
-    </div>
-  </div>
-
-  <div class="product-card">
-    <img src="https://source.unsplash.com/featured/?tent" alt="Kamp Çadırı">
+  <div class="product-card" data-kategori="Kamp">
+    <img src="https://source.unsplash.com/featured/?tent" alt="Çadır">
     <div class="content">
       <h2>Kamp Çadırı</h2>
-      <p>Haftalık doğa keyfi. 200 TL</p>
+      <p>Doğada huzur. Haftalık 150 TL</p>
+    </div>
+    <div class="footer">
+      <a href="urun-detay.html" class="btn">İncele</a>
+    </div>
+  </div>
+
+  <div class="product-card" data-kategori="Fotoğrafçılık">
+    <img src="https://source.unsplash.com/featured/?camera" alt="Kamera">
+    <div class="content">
+      <h2>Canon DSLR</h2>
+      <p>Net çekimler. Günlük 120 TL</p>
     </div>
     <div class="footer">
       <a href="urun-detay.html" class="btn">İncele</a>
     </div>
   </div>
 </div>
+
+<!-- JS -->
+<script>
+  function filtrele(kategori) {
+    const kartlar = document.querySelectorAll(".product-card");
+    kartlar.forEach(kart => {
+      const kartKategori = kart.getAttribute("data-kategori");
+      if (kategori === "Hepsi" || kartKategori === kategori) {
+        kart.style.display = "block";
+      } else {
+        kart.style.display = "none";
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
