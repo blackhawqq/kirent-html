@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Kayıt Ol</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    button {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-box">
+  <h2>Kayıt Ol</h2>
+  <input type="text" id="newUsername" placeholder="Kullanıcı Adı" required />
+  <input type="password" id="newPassword" placeholder="Şifre" required />
+  <button onclick="register()">Kayıt Ol</button>
+</div>
+
+<script>
+  function register() {
+    const username = document.getElementById("newUsername").value;
+    const password = document.getElementById("newPassword").value;
+
+    if (username && password) {
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+      alert("Kayıt başarılı!");
+      window.location.href = "giris.html";
+    } else {
+      alert("Tüm alanları doldurun.");
+    }
+  }
+</script>
+
+</body>
+</html>
