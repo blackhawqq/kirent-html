@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KirentApp</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kirent - Kirala, Paylaş, Yaşat</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,12 +16,17 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
+
     header h1 {
       color: #4F46E5;
       font-size: 24px;
-      font-weight: 800;
+      font-weight: bold;
     }
+
     nav a {
       margin-left: 20px;
       color: #4F46E5;
@@ -29,95 +34,97 @@
       font-weight: 600;
     }
 
-    .banner {
-      background: linear-gradient(to right, #4F46E5, #6D6DEB);
+    .hero {
+      background: linear-gradient(to right, #4F46E5, #667eea);
       color: white;
-      text-align: center;
       padding: 60px 20px;
-      position: relative;
-    }
-    .banner h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
+      text-align: center;
     }
 
-    .decoration {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 60px;
-      height: 60px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 50%;
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      opacity: 0.9;
     }
 
     .categories {
-      background: #fff;
-      padding: 16px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
+      background: #fff;
+      padding: 20px;
+      gap: 10px;
       border-bottom: 1px solid #eee;
     }
+
     .categories button {
-      padding: 8px 16px;
+      padding: 10px 16px;
       background: #4F46E5;
       color: #fff;
       border: none;
       border-radius: 20px;
       cursor: pointer;
       font-size: 14px;
+      transition: 0.3s;
     }
 
-    .product-list {
+    .categories button:hover {
+      background: #3e3abf;
+    }
+
+    .products {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 20px;
-      padding: 30px;
-      max-width: 1200px;
-      margin: auto;
     }
 
     .card {
-      background: #fff;
+      background: white;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      position: relative;
+      transition: transform 0.2s;
     }
-    .card::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #4F46E5;
-      border-radius: 50%;
-      top: 10px;
-      right: 10px;
+
+    .card:hover {
+      transform: translateY(-5px);
     }
+
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
     }
+
     .card-body {
-      padding: 12px;
+      padding: 16px;
       flex: 1;
     }
+
     .card-body h3 {
-      font-size: 16px;
+      font-size: 18px;
       margin-bottom: 6px;
     }
+
     .card-body p {
       font-size: 14px;
       color: #666;
     }
+
     .card-footer {
-      padding: 12px;
+      padding: 16px;
       text-align: right;
     }
+
     .btn {
       background: #4F46E5;
       color: white;
@@ -131,25 +138,23 @@
       background: #4F46E5;
       color: white;
       text-align: center;
-      padding: 16px;
-      margin-top: 40px;
+      padding: 20px;
+      margin-top: 60px;
     }
 
-    /* Test mesajı için stil */
-    .test-info {
-      background: #ffe9e9;
-      color: #d10000;
-      font-weight: bold;
+    .test-alert {
+      background: #ffecec;
+      color: #c00;
+      padding: 12px;
       text-align: center;
-      padding: 15px;
-      margin-bottom: 10px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>KirentApp</h1>
+  <h1>Kirent</h1>
   <nav>
     <a href="index.html">Anasayfa</a>
     <a href="urunler.html">Ürünler</a>
@@ -158,14 +163,13 @@
   </nav>
 </header>
 
-<div class="banner">
-  <h2>Ürününü kolayca kirala!</h2>
-  <p>Sıfır komisyonla kazancını artır</p>
-  <div class="decoration"></div>
+<div class="hero">
+  <h2>Ürününü Kirala, Gelir Kazan!</h2>
+  <p>Sıfır komisyon, güvenli alışveriş, anında kiralama.</p>
 </div>
 
-<!-- TEST İÇİN UYARI -->
-<div class="test-info">Bu index sayfası güncellenmiş midir?</div>
+<!-- Test için uyarı -->
+<div class="test-alert">✅ Bu sayfa GÜNCELLENMİŞTİR - Eğer bunu görüyorsan sistem doğru çalışıyor.</div>
 
 <div class="categories">
   <button>Hepsi</button>
@@ -177,37 +181,37 @@
   <button>Diğer</button>
 </div>
 
-<div class="product-list">
+<div class="products">
   <div class="card">
-    <img src="https://source.unsplash.com/featured/?bicycle" alt="Dağ Bisikleti">
+    <img src="https://source.unsplash.com/featured/?bicycle" alt="Bisiklet">
     <div class="card-body">
       <h3>Dağ Bisikleti</h3>
-      <p>Günlük 90 TL - Kadıköy, İstanbul</p>
+      <p>Günlük 90 TL - Kadıköy</p>
     </div>
     <div class="card-footer">
-      <a href="urun-detay.html" class="btn">Kirala</a>
+      <a href="kirala.html" class="btn">Kirala</a>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://source.unsplash.com/featured/?camera" alt="Canon Kamera">
+    <img src="https://source.unsplash.com/featured/?camera" alt="Kamera">
     <div class="card-body">
       <h3>Canon Kamera</h3>
-      <p>Günlük 120 TL - Beşiktaş, İstanbul</p>
+      <p>Günlük 120 TL - Beşiktaş</p>
     </div>
     <div class="card-footer">
-      <a href="urun-detay.html" class="btn">Kirala</a>
+      <a href="kirala.html" class="btn">Kirala</a>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://source.unsplash.com/featured/?tent" alt="Kamp Çadırı">
+    <img src="https://source.unsplash.com/featured/?tent" alt="Çadır">
     <div class="card-body">
       <h3>Kamp Çadırı</h3>
       <p>Haftalık 250 TL - İzmir</p>
     </div>
     <div class="card-footer">
-      <a href="urun-detay.html" class="btn">Kirala</a>
+      <a href="kirala.html" class="btn">Kirala</a>
     </div>
   </div>
 </div>
