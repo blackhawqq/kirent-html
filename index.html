@@ -1,72 +1,80 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KirentApp</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KirentApp - Kirala, Paylaş, Yaşat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #f5f7fb; color: #333; }
-
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fafe;
+      color: #333;
+    }
     header {
-      background: #fff;
-      padding: 16px 32px;
+      background-color: #4F46E5;
+      color: white;
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    header h1 { color: #4F46E5; font-size: 24px; }
+    header h1 {
+      font-size: 24px;
+    }
     nav a {
       margin-left: 20px;
-      color: #4F46E5;
+      color: white;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
+      transition: opacity 0.3s;
     }
-
-    .banner {
-      background: linear-gradient(to right, #4F46E5, #6D6DEB);
+    nav a:hover {
+      opacity: 0.8;
+    }
+    .hero {
+      padding: 60px 20px;
+      background: linear-gradient(to right, #4F46E5, #6366F1);
       color: white;
       text-align: center;
-      padding: 60px 20px;
     }
-    .banner h2 { font-size: 32px; margin-bottom: 10px; }
-
-    .categories {
-      background: #fff;
-      padding: 16px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      border-bottom: 1px solid #eee;
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
     }
-    .categories button {
-      padding: 8px 16px;
-      background: #4F46E5;
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 14px;
+    .hero p {
+      font-size: 18px;
+      margin-top: 5px;
     }
-
-    .product-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 20px;
-      padding: 30px;
+    .container {
       max-width: 1200px;
       margin: auto;
+      padding: 40px 20px;
     }
-
+    .section-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
     .card {
-      background: #fff;
+      background: white;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
     }
     .card img {
       width: 100%;
@@ -74,133 +82,109 @@
       object-fit: cover;
     }
     .card-body {
-      padding: 12px;
-      flex: 1;
+      padding: 16px;
     }
     .card-body h3 {
       font-size: 16px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .card-body p {
       font-size: 14px;
       color: #666;
     }
     .card-footer {
-      padding: 12px;
+      padding: 16px;
       text-align: right;
     }
     .btn {
-      background: #4F46E5;
+      background-color: #4F46E5;
       color: white;
       padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 14px;
+      border-radius: 24px;
       text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
     }
-
+    .btn:hover {
+      background-color: #4338ca;
+    }
     footer {
-      background: #4F46E5;
-      color: white;
       text-align: center;
-      padding: 16px;
-      margin-top: 40px;
+      padding: 30px;
+      color: #999;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>KirentApp</h1>
-  <nav>
-    <a href="index.html">Anasayfa</a>
-    <a href="urunler.html">Ürünler</a>
-    <a href="urun-ekle.html">Ürün Ekle</a>
-    <a href="giriskayit-profil.html">Giriş / Kayıt</a>
-    <a href="kirala.html" class="btn">Kirala</a>
+  <header>
+    <h1>KirentApp</h1>
+    <nav>
+      <a href="urunler.html">Ürünler</a>
+      <a href="urun-ekle.html">Ürün Ekle</a>
+      <a href="kirala.html">Kirala</a>
+      <a href="giriskayit-profil.html">Profilim</a>
+    </nav>
+  </header>
 
-  </nav>
-</header>
+  <div class="hero">
+    <h2>Kirala, Paylaş, Yaşat</h2>
+    <p>Kullanmadığın eşyaları kazanca çevir</p>
+  </div>
 
-<div class="banner">
-  <h2>Ürününü kolayca kirala!</h2>
-  <p>Sıfır komisyonla kazancını artır</p>
-</div>
+  <div class="container">
+    <div class="section-title">Popüler Ürünler</div>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1589187155474-6b83bd3c60aa?auto=format&fit=crop&w=800&q=80" alt="Dağ Bisikleti">
+        <div class="card-body">
+          <h3>Dağ Bisikleti</h3>
+          <p>Günlük 90 TL – Kadıköy, İstanbul</p>
+        </div>
+        <div class="card-footer">
+          <a href="urun-detay.html" class="btn">Kirala</a>
+        </div>
+      </div>
 
-<div class="categories">
-  <button onclick="filtrele('Hepsi')">Hepsi</button>
-  <button onclick="filtrele('Elektronik')">Elektronik</button>
-  <button onclick="filtrele('Ulaşım')">Ulaşım</button>
-  <button onclick="filtrele('Ev Eşyası')">Ev Eşyası</button>
-  <button onclick="filtrele('Kamp')">Kamp</button>
-  <button onclick="filtrele('Moda')">Moda</button>
-  <button onclick="filtrele('Diğer')">Diğer</button>
-</div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1535914254981-b5012eebbd15?auto=format&fit=crop&w=800&q=80" alt="Canon Kamera">
+        <div class="card-body">
+          <h3>Canon Kamera</h3>
+          <p>Günlük 120 TL – Beşiktaş, İstanbul</p>
+        </div>
+        <div class="card-footer">
+          <a href="urun-detay.html" class="btn">Kirala</a>
+        </div>
+      </div>
 
-<div class="product-list" id="urunler">
-  <div class="card" data-kategori="Ulaşım">
-    <img src="https://source.unsplash.com/featured/?bicycle" alt="Dağ Bisikleti">
-    <div class="card-body">
-      <h3>Dağ Bisikleti</h3>
-      <p>Günlük 90 TL - Kadıköy, İstanbul</p>
-    </div>
-    <div class="card-footer">
-      <a href="urun-detay.html?id=bisiklet" class="btn">Kirala</a>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1506368079540-904bcc762636?auto=format&fit=crop&w=800&q=80" alt="Kamp Çadırı">
+        <div class="card-body">
+          <h3>Kamp Çadırı</h3>
+          <p>Haftalık 250 TL – İzmir</p>
+        </div>
+        <div class="card-footer">
+          <a href="urun-detay.html" class="btn">Kirala</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1606813903274-b45321519505?auto=format&fit=crop&w=800&q=80" alt="PlayStation 5">
+        <div class="card-body">
+          <h3>PlayStation 5</h3>
+          <p>Haftalık 500 TL – Üsküdar, İstanbul</p>
+        </div>
+        <div class="card-footer">
+          <a href="urun-detay.html" class="btn">Kirala</a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="card" data-kategori="Elektronik">
-    <img src="https://source.unsplash.com/featured/?camera" alt="Canon Kamera">
-    <div class="card-body">
-      <h3>Canon Kamera</h3>
-      <p>Günlük 120 TL - Beşiktaş, İstanbul</p>
-    </div>
-    <div class="card-footer">
-      <a href="urun-detay.html?id=kamera" class="btn">Kirala</a>
-    </div>
-  </div>
-
-  <div class="card" data-kategori="Kamp">
-    <img src="https://source.unsplash.com/featured/?tent" alt="Kamp Çadırı">
-    <div class="card-body">
-      <h3>Kamp Çadırı</h3>
-      <p>Haftalık 250 TL - İzmir</p>
-    </div>
-    <div class="card-footer">
-      <a href="urun-detay.html?id=kamp-cadiri" class="btn">Kirala</a>
-    </div>
-  </div>
-
-  <div class="card" data-kategori="Ev Eşyası">
-    <img src="https://source.unsplash.com/featured/?sofa" alt="Koltuk Takımı">
-    <div class="card-body">
-      <h3>Koltuk Takımı</h3>
-      <p>Aylık 750 TL - Ankara</p>
-    </div>
-    <div class="card-footer">
-      <a href="urun-detay.html?id=koltuk" class="btn">Kirala</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  © 2025 KirentApp. Tüm hakları saklıdır.
-</footer>
-
-<script>
-  function filtrele(kategori) {
-    const kartlar = document.querySelectorAll(".card");
-    kartlar.forEach(kart => {
-      const kartKategori = kart.getAttribute("data-kategori");
-      if (kategori === "Hepsi" || kartKategori === kategori) {
-        kart.style.display = "block";
-      } else {
-        kart.style.display = "none";
-      }
-    });
-  }
-</script>
+  <footer>
+    © 2025 KirentApp. Tüm hakları saklıdır.
+  </footer>
 
 </body>
 </html>
-
-
