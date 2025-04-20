@@ -1,122 +1,61 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kirent - Giriş & Kayıt</title>
+  <meta charset="UTF-8">
+  <title>Giriş Yap</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial;
       background: #f4f6f8;
-      margin: 0;
-      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
-    .container {
+    .box {
       background: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 400px;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #4F46E5;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      width: 300px;
     }
     input, button {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      font-size: 14px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
     }
     button {
       background: #4F46E5;
       color: white;
       border: none;
-      font-weight: bold;
       cursor: pointer;
-    }
-    button:hover {
-      background: #3b38d0;
-    }
-    .toggle {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 14px;
-    }
-    .toggle a {
-      color: #4F46E5;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .error {
-      color: red;
-      text-align: center;
     }
   </style>
 </head>
 <body>
+  <div class="box">
+    <h2>Giriş Yap</h2>
+    <input type="text" id="kullanici" placeholder="Kullanıcı Adı" />
+    <input type="password" id="sifre" placeholder="Şifre" />
+    <button onclick="girisYap()">Giriş Yap</button>
+  </div>
 
-<div class="container" id="form-box">
-  <h2>Giriş Yap</h2>
-  <input type="text" id="username" placeholder="Kullanıcı Adı" />
-  <input type="password" id="password" placeholder="Şifre" />
-  <button onclick="login()">Giriş Yap</button>
-  <p class="error" id="error-msg"></p>
-  <div class="toggle">Hesabınız yok mu? <a onclick="toggleForm()">Kayıt Ol</a></div>
-</div>
+  <script>
+    function girisYap() {
+      const k = document.getElementById("kullanici").value;
+      const s = document.getElementById("sifre").value;
 
-<script>
-  function login() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
-    const errorMsg = document.getElementById("error-msg");
+      const kayitliK = localStorage.getItem("username");
+      const kayitliS = localStorage.getItem("password");
 
-    const savedUser = localStorage.getItem("username");
-    const savedPass = localStorage.getItem("password");
-
-    if (user === savedUser && pass === savedPass) {
-      window.location.href = "kullanici-profil.html";
-    } else {
-      errorMsg.textContent = "Kullanıcı adı veya şifre yanlış!";
+      if (k === kayitliK && s === kayitliS) {
+        alert("Giriş başarılı!");
+        window.location.href = "kullanici-profil.html";
+      } else {
+        alert("Hatalı kullanıcı adı veya şifre!");
+      }
     }
-  }
-
-  function toggleForm() {
-    const box = document.getElementById("form-box");
-    box.innerHTML = `
-      <h2>Kayıt Ol</h2>
-      <input type="text" id="newUsername" placeholder="Kullanıcı Adı" />
-      <input type="password" id="newPassword" placeholder="Şifre" />
-      <button onclick="register()">Kayıt Ol</button>
-      <p class="error" id="error-msg"></p>
-      <div class="toggle">Zaten hesabınız var mı? <a onclick='location.reload()'>Giriş Yap</a></div>
-    `;
-  }
-
-  function register() {
-    const newUser = document.getElementById("newUsername").value;
-    const newPass = document.getElementById("newPassword").value;
-    const errorMsg = document.getElementById("error-msg");
-
-    if (newUser && newPass) {
-      localStorage.setItem("username", newUser);
-      localStorage.setItem("password", newPass);
-      alert("Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz.");
-      location.reload();
-    } else {
-      errorMsg.textContent = "Lütfen tüm alanları doldurun.";
-    }
-  }
-</script>
-
+  </script>
 </body>
 </html>
+
