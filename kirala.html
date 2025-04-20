@@ -6,24 +6,53 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
+      background: #f4f4f4;
+      padding: 40px;
     }
-    .box {
+    .container {
+      max-width: 400px;
+      margin: auto;
       background: white;
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      width: 360px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    input, textarea, button {
+    h2 {
+      text-align: center;
+      color: #4F46E5;
+    }
+    input, button {
       width: 100%;
       padding: 10px;
-      margin-top: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
       border: 1px solid #ccc;
-      border-radius: 6px
+    }
+    button {
+      background: #4F46E5;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #3c3ac8;
+    }
+  </style>
+</head>
+<body>
 
+  <div class="container">
+    <h2>Kiralama Talebi</h2>
+    <form action="tesekkur.html" method="POST">
+      <input type="text" name="ad" placeholder="Adınız Soyadınız" required>
+      <input type="email" name="email" placeholder="E-posta" required>
+      <input type="text" name="urun" placeholder="Kiralanacak Ürün" required>
+      <input type="date" name="baslangic" required>
+      <input type="date" name="bitis" required>
+      <button type="submit">Talebi Gönder</button>
+    </form>
+  </div>
+
+</body>
+</html>
