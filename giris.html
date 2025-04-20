@@ -57,44 +57,66 @@
       font-weight: bold;
       cursor: pointer;
     }
+    .error {
+      color: red;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <div class="container" id="form-box">
-    <h2>Giriş Yap</h2>
-    <form id="login-form">
-      <input type="email" placeholder="E-posta" required />
-      <input type="password" placeholder="Şifre" required />
-      <button type="submit">Giriş Yap</button>
-    </form>
-    <div class="toggle">Hesabınız yok mu? <a onclick="toggleForm()">Kayıt Ol</a></div>
-  </div>
 
-  <script>
-    function toggleForm() {
-      const box = document.getElementById("form-box");
-      box.innerHTML = `
-        <h2>Kayıt Ol</h2>
-        <form id="register-form">
-          <input type="text" placeholder="Ad Soyad" required />
-          <input type="email" placeholder="E-posta" required />
-          <input type="password" placeholder="Şifre" required />
-          <button type="submit">Kayıt Ol</button>
-        </form>
-        <div class="toggle">Zaten hesabınız var mı? <a onclick='location.reload()'>Giriş Yap</a></div>
-      `;
+<div class="container" id="form-box">
+  <h2>Giriş Yap</h2>
+  <input type="text" id="username" placeholder="Kullanıcı Adı" />
+  <input type="password" id="password" placeholder="Şifre" />
+  <button onclick="login()">Giriş Yap</button>
+  <p class="error" id="error-msg"></p>
+  <div class="toggle">Hesabınız yok mu? <a onclick="toggleForm()">Kayıt Ol</a></div>
+</div>
+
+<script>
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const errorMsg = document.getElementById("error-msg");
+
+    const savedUser = localStorage.getItem("username");
+    const savedPass = localStorage.getItem("password");
+
+    if (user === savedUser && pass === savedPass) {
+      window.location.href = "kullanici-profil.html";
+    } else {
+      errorMsg.textContent = "Kullanıcı adı veya şifre yanlış!";
     }
-  </script>
-</body>
-  <header>
-  <h1>KirentApp</h1>
-  <nav>
-    <a href="index.html">Anasayfa</a>
-    <a href="urunler.html">Ürünler</a>
-    <a href="urun-ekle.html">Ürün Ekle</a>
-    <a href="profil.html">Profilim</a>
-    <a href="giris.html">Giriş</a>
-  </nav>
-</header>
+  }
 
+  function toggleForm() {
+    const box = document.getElementById("form-box");
+    box.innerHTML = `
+      <h2>Kayıt Ol</h2>
+      <input type="text" id="newUsername" placeholder="Kullanıcı Adı" />
+      <input type="password" id="newPassword" placeholder="Şifre" />
+      <button onclick="register()">Kayıt Ol</button>
+      <p class="error" id="error-msg"></p>
+      <div class="toggle">Zaten hesabınız var mı? <a onclick='location.reload()'>Giriş Yap</a></div>
+    `;
+  }
+
+  function register() {
+    const newUser = document.getElementById("newUsername").value;
+    const newPass = document.getElementById("newPassword").value;
+    const errorMsg = document.getElementById("error-msg");
+
+    if (newUser && newPass) {
+      localStorage.setItem("username", newUser);
+      localStorage.setItem("password", newPass);
+      alert("Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz.");
+      location.reload();
+    } else {
+      errorMsg.textContent = "Lütfen tüm alanları doldurun.";
+    }
+  }
+</script>
+
+</body>
 </html>
