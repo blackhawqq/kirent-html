@@ -6,16 +6,13 @@
   <title>KirentApp - Kirala, Paylaş, Yaşat</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f9fafe;
+      background: #f9fafe;
       color: #333;
     }
+
     header {
       background-color: #4F46E5;
       color: white;
@@ -23,10 +20,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+      z-index: 2;
     }
-    header h1 {
-      font-size: 24px;
-    }
+
+    header h1 { font-size: 24px; }
+
     nav a {
       margin-left: 20px;
       color: white;
@@ -34,68 +33,122 @@
       font-weight: 500;
       transition: opacity 0.3s;
     }
-    nav a:hover {
-      opacity: 0.8;
-    }
+    nav a:hover { opacity: 0.8; }
+
     .hero {
-      padding: 60px 20px;
+      padding: 80px 20px 60px;
       background: linear-gradient(to right, #4F46E5, #6366F1);
       color: white;
       text-align: center;
+      position: relative;
     }
+
+    .hero svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
     .hero h2 {
       font-size: 36px;
       margin-bottom: 10px;
     }
+
     .hero p {
       font-size: 18px;
       margin-top: 5px;
     }
+
+    .section {
+      position: relative;
+      background-color: white;
+      padding: 60px 20px 40px;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      left: -60px;
+      width: 200px;
+      height: 200px;
+      background: rgba(79, 70, 229, 0.05);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .section::after {
+      content: "";
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      width: 150px;
+      height: 150px;
+      background: rgba(79, 70, 229, 0.07);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
     .container {
       max-width: 1200px;
       margin: auto;
-      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
     }
+
     .section-title {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #4F46E5;
     }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 24px;
     }
+
     .card {
       background: white;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       overflow: hidden;
       transition: transform 0.2s;
     }
+
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
     }
+
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
     }
+
     .card-body {
       padding: 16px;
     }
+
     .card-body h3 {
       font-size: 16px;
       margin-bottom: 8px;
     }
+
     .card-body p {
       font-size: 14px;
       color: #666;
     }
+
     .card-footer {
       padding: 16px;
       text-align: right;
     }
+
     .btn {
       background-color: #4F46E5;
       color: white;
@@ -106,33 +159,38 @@
       font-weight: 500;
       transition: background 0.3s;
     }
+
     .btn:hover {
       background-color: #4338ca;
     }
+
     footer {
       text-align: center;
       padding: 30px;
       color: #999;
+      background: #f4f4f4;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>KirentApp</h1>
-    <nav>
-      <a href="urunler.html">Ürünler</a>
-      <a href="urun-ekle.html">Ürün Ekle</a>
-      <a href="kirala.html">Kirala</a>
-      <a href="giriskayit-profil.html">Profilim</a>
-    </nav>
-  </header>
+<header>
+  <h1>KirentApp</h1>
+  <nav>
+    <a href="urunler.html">Ürünler</a>
+    <a href="urun-ekle.html">Ürün Ekle</a>
+    <a href="kirala.html">Kirala</a>
+    <a href="giriskayit-profil.html">Profilim</a>
+  </nav>
+</header>
 
-  <div class="hero">
-    <h2>Kirala, Paylaş, Yaşat</h2>
-    <p>Kullanmadığın eşyaları kazanca çevir</p>
-  </div>
+<section class="hero">
+  <h2>Kirala, Paylaş, Yaşat</h2>
+  <p>Kullanmadığın eşyaları kazanca çevir</p>
+  <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,101.3C672,107,768,149,864,149.3C960,149,1056,107,1152,112C1248,117,1344,171,1392,197.3L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+</section>
 
+<section class="section">
   <div class="container">
     <div class="section-title">Popüler Ürünler</div>
     <div class="grid">
@@ -181,10 +239,12 @@
       </div>
     </div>
   </div>
+</section>
 
-  <footer>
-    © 2025 KirentApp. Tüm hakları saklıdır.
-  </footer>
+<footer>
+  © 2025 KirentApp. Tüm hakları saklıdır.
+</footer>
 
 </body>
 </html>
+
