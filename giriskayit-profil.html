@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Giriş & Kayıt & Profil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 350px;
+      text-align: center;
+    }
+    h2 { color: #4F46E5; margin-bottom: 20px; }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    button {
+      background: #4F46E5;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .link {
+      margin-top: 15px;
+      color: #4F46E5;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 14px;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- Giriş Formu -->
+<div class="container" id="girisFormu">
+  <h2>Giriş Yap</h2>
+  <input type="text" id="girisKullanici" placeholder="Kullanıcı Adı" />
+  <input type="password" id="girisSifre" placeholder="Şifre" />
+  <button onclick="girisYap()">Giriş</button>
+  <div class="link" onclick="formGoster('kayitFormu')">Hesabınız yok mu? Kayıt Ol</div>
+</div>
+
+<!-- Kayıt Formu -->
+<div class="container hidden" id="kayitFormu">
+  <h2>Kayıt Ol</h2>
+  <input type="text" id="kayitKullanici" placeholder="Kullanıcı Adı" />
+  <input type="password" id="kayitSifre" placeholder="Şifre" />
+  <button onclick="kayitOl()">Kaydol</button>
+  <div class="link" onclick="formGoster('girisFormu')">Zaten hesabınız var mı? Giriş Yap</div>
+</div>
+
+<!-- Profil Sayfası -->
+<div class="container hidden" id="profilSayfasi">
+  <h2>Hoş geldin, <span id="kullaniciAdi"></span></h2>
+  <p>Başarıyla giriş yaptınız.</p>
+  <button onclick="cikisYap()">Çıkış Yap</button>
+</div>
+
+<script>
+  function formGoster(id) {
+    document.getElementById("girisFormu").classList.add("hidden");
+    document.getElementById("kayitFormu").classList.add("hidden");
+    document.getElementById("profilSayfasi").classList.add("hidden");
+    document.getElementById(id).classList.remove("hidden");
+  }
+
+  function kayitOl() {
+    const k = document.getElementById("kayitKullanici").value;
+    const s = document.getElementById("kayitSifre").value;
+    if (k && s) {
+      localStorage.setItem("username", k);
+      localStorage.setItem("password", s);
+      alert("Kayıt başarılı. Şimdi giriş yapabilirsiniz.");
+      formGoster("girisFormu");
+    } else {
+      alert("Lütfen kullanıcı adı ve şifre girin.");
+    }
+  }
+
+  function girisYap() {
+    const k = document.getElementById("girisKullanici").value;
+    const s = document.getElementById("girisSifre").value;
+    const kayitliK = localStorage.getItem("username");
+    const kayitliS = localStorage.getItem("password");
+
+    if (k === kayitliK && s === kayitliS) {
+      document.getElementById("kullaniciAdi").textContent = k;
+      formGoster("profilSayfasi");
+    } else {
+      alert("Kullanıcı adı veya şifre hatalı!");
+    }
+  }
+
+  function cikisYap() {
+    formGoster("girisFormu");
+    document.getElementById("girisKullanici").value = "";
+    document.getElementById("girisSifre").value = "";
+  }
+</script>
+
+</body>
+</html>
