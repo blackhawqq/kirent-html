@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kirent - Ürün Ekle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #4F46E5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .form-container {
+      max-width: 600px;
+      background: white;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #4F46E5;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background-color: #4F46E5;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #3b38d0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Kirent - Ürün Ekle</h1>
+  <nav>
+    <a href="index.html">Anasayfa</a>
+    <a href="urunler.html">Ürünler</a>
+    <a href="urun-ekle.html">Ürün Ekle</a>
+    <a href="giris.html">Giriş</a>
+  </nav>
+</header>
+
+<div class="form-container">
+  <h2>Ürününü Kiraya Ver</h2>
+  <form action="#" method="POST">
+    <input type="text" name="urun_adi" placeholder="Ürün Adı" required />
+    <select name="kategori" required>
+      <option value="">Kategori Seçin</option>
+      <option value="Elektronik">Elektronik</option>
+      <option value="Ulaşım">Ulaşım</option>
+      <option value="Ev Eşyası">Ev Eşyası</option>
+      <option value="Fotoğrafçılık">Fotoğrafçılık</option>
+      <option value="Kamp">Kamp</option>
+    </select>
+    <input type="number" name="fiyat" placeholder="Günlük Fiyat (TL)" required />
+    <input type="text" name="konum" placeholder="Konum (İl / İlçe)" required />
+    <input type="url" name="resim_url" placeholder="Ürün Görseli Bağlantısı" required />
+    <textarea name="aciklama" placeholder="Ürün Açıklaması" rows="4"></textarea>
+    <button type="submit">Gönder</button>
+  </form>
+</div>
+
+</body>
+</html>
