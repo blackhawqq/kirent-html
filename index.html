@@ -2,12 +2,12 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KirentApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kirent - Ürün Kiralama Platformu</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #f5f7fb; color: #333; }
+    body { font-family: 'Inter', sans-serif; background: #f7f9fc; color: #333; }
 
     header {
       background: #fff;
@@ -15,82 +15,108 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
-    header img {
-      height: 40px;
+
+    header h1 {
+      color: #4F46E5;
+      font-size: 24px;
+      font-weight: 700;
     }
+
     nav a {
       margin-left: 20px;
-      color: #4F46E5;
       text-decoration: none;
+      color: #4F46E5;
       font-weight: 600;
     }
 
-    .banner {
-      background: linear-gradient(to right, #4F46E5, #6D6DEB);
+    .hero {
+      background: linear-gradient(to right, #4F46E5, #667eea);
       color: white;
+      padding: 60px 30px;
       text-align: center;
-      padding: 60px 20px;
     }
-    .banner h2 { font-size: 32px; margin-bottom: 10px; }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
 
     .categories {
-      background: #fff;
-      padding: 16px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
+      background: #fff;
+      padding: 20px;
+      gap: 10px;
       border-bottom: 1px solid #eee;
     }
+
     .categories button {
-      padding: 8px 16px;
+      padding: 10px 16px;
       background: #4F46E5;
       color: #fff;
       border: none;
       border-radius: 20px;
       cursor: pointer;
       font-size: 14px;
+      transition: 0.3s;
     }
 
-    .product-list {
+    .categories button:hover {
+      background: #3e3abf;
+    }
+
+    .products {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 20px;
-      padding: 30px;
-      max-width: 1200px;
-      margin: auto;
     }
 
     .card {
       background: #fff;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       overflow: hidden;
       display: flex;
       flex-direction: column;
     }
+
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
     }
+
     .card-body {
-      padding: 12px;
+      padding: 16px;
       flex: 1;
     }
+
     .card-body h3 {
-      font-size: 16px;
+      font-size: 18px;
       margin-bottom: 6px;
     }
+
     .card-body p {
       font-size: 14px;
       color: #666;
     }
+
     .card-footer {
-      padding: 12px;
+      padding: 16px;
       text-align: right;
     }
+
     .btn {
       background: #4F46E5;
       color: white;
@@ -104,17 +130,35 @@
       background: #4F46E5;
       color: white;
       text-align: center;
-      padding: 16px;
-      margin-top: 40px;
+      padding: 20px;
+      margin-top: 60px;
+    }
+
+    /* Semboller */
+    .decor {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(79,70,229,0.1);
+      border-radius: 50%;
+      top: 120px;
+      left: 20px;
+    }
+
+    .decor-square {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: rgba(79,70,229,0.08);
+      top: 300px;
+      right: 40px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <a href="index.html">
-    <img src="images/kirent-logo.png" alt="Kirent Logo">
-  </a>
+  <h1>Kirent</h1>
   <nav>
     <a href="index.html">Anasayfa</a>
     <a href="urunler.html">Ürünler</a>
@@ -123,9 +167,9 @@
   </nav>
 </header>
 
-<div class="banner">
-  <h2>Ürününü kolayca kirala!</h2>
-  <p>Sıfır komisyonla kazancını artır</p>
+<div class="hero">
+  <h2>Ürününü Kirala, Gelir Kazan!</h2>
+  <p>Sıfır komisyon, güvenli ödeme, anında ilan.</p>
 </div>
 
 <div class="categories">
@@ -138,7 +182,7 @@
   <button>Diğer</button>
 </div>
 
-<div class="product-list">
+<div class="products">
   <div class="card">
     <img src="https://source.unsplash.com/featured/?bicycle" alt="Dağ Bisikleti">
     <div class="card-body">
@@ -146,7 +190,7 @@
       <p>Günlük 90 TL - Kadıköy, İstanbul</p>
     </div>
     <div class="card-footer">
-      <a href="urun-detay.html" class="btn">Kirala</a>
+      <a href="kirala.html" class="btn">Kirala</a>
     </div>
   </div>
 
@@ -157,7 +201,7 @@
       <p>Günlük 120 TL - Beşiktaş, İstanbul</p>
     </div>
     <div class="card-footer">
-      <a href="urun-detay.html" class="btn">Kirala</a>
+      <a href="kirala.html" class="btn">Kirala</a>
     </div>
   </div>
 
@@ -168,10 +212,13 @@
       <p>Haftalık 250 TL - İzmir</p>
     </div>
     <div class="card-footer">
-      <a href="urun-detay.html" class="btn">Kirala</a>
+      <a href="kirala.html" class="btn">Kirala</a>
     </div>
   </div>
 </div>
+
+<div class="decor"></div>
+<div class="decor-square"></div>
 
 <footer>
   © 2025 KirentApp. Tüm hakları saklıdır.
