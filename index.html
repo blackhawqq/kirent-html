@@ -2,9 +2,8 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kirent - Kirala, Paylaş, Yaşat</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KirentApp - Kirala, Paylaş, Yaşat</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #f5f7fb; color: #333; }
@@ -16,9 +15,6 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
 
     header h1 {
@@ -34,69 +30,34 @@
       font-weight: 600;
     }
 
-    .hero {
-      background: linear-gradient(to right, #4F46E5, #667eea);
-      color: white;
-      padding: 60px 20px;
+    .banner {
+      margin: 30px auto;
       text-align: center;
     }
 
-    .hero h2 {
-      font-size: 36px;
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      opacity: 0.9;
-    }
-
-    .categories {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      background: #fff;
-      padding: 20px;
-      gap: 10px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .categories button {
-      padding: 10px 16px;
-      background: #4F46E5;
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-
-    .categories button:hover {
-      background: #3e3abf;
-    }
-
-    .products {
+    .banner img {
+      width: 100%;
       max-width: 1200px;
-      margin: auto;
-      padding: 40px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+
+    .product-list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 20px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
     }
 
     .card {
       background: white;
       border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
     }
 
     .card img {
@@ -106,12 +67,12 @@
     }
 
     .card-body {
-      padding: 16px;
+      padding: 12px;
       flex: 1;
     }
 
     .card-body h3 {
-      font-size: 18px;
+      font-size: 16px;
       margin-bottom: 6px;
     }
 
@@ -121,7 +82,7 @@
     }
 
     .card-footer {
-      padding: 16px;
+      padding: 12px;
       text-align: right;
     }
 
@@ -138,23 +99,15 @@
       background: #4F46E5;
       color: white;
       text-align: center;
-      padding: 20px;
-      margin-top: 60px;
-    }
-
-    .test-alert {
-      background: #ffecec;
-      color: #c00;
-      padding: 12px;
-      text-align: center;
-      font-weight: bold;
+      padding: 16px;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Kirent</h1>
+  <h1>KirentApp</h1>
   <nav>
     <a href="index.html">Anasayfa</a>
     <a href="urunler.html">Ürünler</a>
@@ -163,25 +116,12 @@
   </nav>
 </header>
 
-<div class="hero">
-  <h2>Ürününü Kirala, Gelir Kazan!</h2>
-  <p>Sıfır komisyon, güvenli alışveriş, anında kiralama.</p>
+<!-- 🔵 Yeni Banner Görseli -->
+<div class="banner">
+  <img src="images/kirala-banner.png" alt="Ürününü Kolayca Kirala" />
 </div>
 
-<!-- Test için uyarı -->
-<div class="test-alert">✅ Bu sayfa GÜNCELLENMİŞTİR - Eğer bunu görüyorsan sistem doğru çalışıyor.</div>
-
-<div class="categories">
-  <button>Hepsi</button>
-  <button>Elektronik</button>
-  <button>Ulaşım</button>
-  <button>Ev Eşyası</button>
-  <button>Kamp</button>
-  <button>Moda</button>
-  <button>Diğer</button>
-</div>
-
-<div class="products">
+<div class="product-list">
   <div class="card">
     <img src="https://source.unsplash.com/featured/?bicycle" alt="Bisiklet">
     <div class="card-body">
@@ -214,30 +154,6 @@
       <a href="kirala.html" class="btn">Kirala</a>
     </div>
   </div>
-</div>
-
-<footer>
-  © 2025 KirentApp. Tüm hakları saklıdır.
-</footer>
-
-</body><header>
-  <h1>KirentApp</h1>
-  <nav>
-    <a href="index.html">Anasayfa</a>
-    <a href="urunler.html">Ürünler</a>
-    <a href="urun-ekle.html">Ürün Ekle</a>
-    <a href="giriskayit-profil.html">Giriş / Kayıt</a>
-  </nav>
-</header>
-
-<!-- 🔵 Yeni Banner Görseli -->
-<div class="banner" style="margin: 30px auto; text-align: center;">
-  <img src="images/kirala-banner.png" alt="Ürününü Kolayca Kirala" style="width: 100%; max-width: 1200px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);" />
-</div>
-
-<!-- Mevcut içerik devam eder... -->
-<div class="product-list">
-  <!-- ürün kartları -->
 </div>
 
 <footer>
